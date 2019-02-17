@@ -5,6 +5,7 @@ import subprocess
 import numpy as np
 import torch
 from torch import nn
+from tqdm import tqdm
 
 from opts import parse_opts
 from model import generate_model
@@ -46,7 +47,7 @@ if __name__=="__main__":
         subprocess.call('rm -rf tmp', shell=True)
 
     outputs = []
-    for input_file in input_files:
+    for input_file in tqdm(input_files):
         video_path = os.path.join(opt.video_root, input_file)
         if os.path.exists(video_path):
             print(video_path)
